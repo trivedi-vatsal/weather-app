@@ -4,7 +4,7 @@ import SunTracker from "./SunTracker";
 const moment = require("moment");
 
 const TodayCard = ({ data, lat, lon }) => {
-  const imgURL = `owf owf-${data.current.weather[0].id} owf-5x ml-3`;
+  // const imgURL = `owf owf-${data.current.weather[0].id} owf-5x ml-3`;
   let graphData = [];
   let label = [];
   let labelFilter = data.hourly.map((entry) => {
@@ -38,12 +38,6 @@ const TodayCard = ({ data, lat, lon }) => {
       showLabel: false,
       showGrid: false,
     },
-
-    axisX: {
-      labelInterpolationFnc: function (value) {
-        return value;
-      },
-    },
   };
   return (
     <div className="container pb-3">
@@ -55,7 +49,11 @@ const TodayCard = ({ data, lat, lon }) => {
                 <span className="font-weight-bolder display-4">
                   {Math.round(data.current.temp)}&#176;C
                 </span>
-                <i className={imgURL} style={{ color: "#cccccc" }}></i>
+                {/* <i className={imgURL} style={{ color: "#cccccc" }}></i> */}
+                <img
+                  src={`http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`}
+                  alt=""
+                />
               </h5>
               <div className="scrolling-wrapper pb-0 chart-today">
                 <ChartistGraph

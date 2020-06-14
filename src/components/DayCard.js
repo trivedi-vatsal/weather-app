@@ -5,7 +5,7 @@ const DayCard = ({ reading }) => {
   let newDate = new Date();
   const weekday = reading.dt * 1000;
   newDate.setTime(weekday);
-  const imgURL = `owf owf-${reading.weather[0].id} owf-5x`;
+  // const imgURL = `owf owf-${reading.weather[0].id} owf-5x`;
 
   return (
     <div>
@@ -17,7 +17,10 @@ const DayCard = ({ reading }) => {
           </span>
           <span> {Math.round(reading.main.temp_min)}&#176;</span>
         </p>
-        <i className={imgURL} style={{ color: "#cccccc" }}></i>
+        <img
+          src={`http://openweathermap.org/img/wn/${reading.weather[0].icon}@2x.png`}
+          alt=""
+        />
         <p>{reading.weather[0].main}</p>
       </div>
     </div>
