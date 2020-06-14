@@ -4,13 +4,12 @@ import TodayCard from "./TodayCard";
 import Search from "./Search";
 
 class WeekContainer extends Component {
-
   state = {
     fullData: [],
     dailyData: [],
     todayData: {},
     lat: "",
-    lon: ""
+    lon: "",
   };
 
   componentDidMount = () => {
@@ -41,13 +40,13 @@ class WeekContainer extends Component {
         );
         let newState = Object.assign({}, this.state);
         newState.fullData = data.list;
-        newState.dailyData = dailyData
+        newState.dailyData = dailyData;
         this.setState(newState);
       });
-  }
+  };
 
   todayData = () => {
-    console.log("call")
+    console.log("call");
     const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.lat}&lon=${this.state.lon}&exclude=minutely,daily&appid=cd560ab35155732fa68beb957bb86d18&units=metric`;
     fetch(url)
       .then((res) => res.json())
@@ -56,7 +55,7 @@ class WeekContainer extends Component {
         newState.todayData = Object.assign({}, data);
         this.setState(newState);
       });
-  }
+  };
 
   formatDayCards = () => {
     return this.state.dailyData.map((reading, index) => (
@@ -71,7 +70,7 @@ class WeekContainer extends Component {
     this.setState(newState);
     this.todayData();
     this.weekData();
-  }
+  };
 
   render() {
     return (
@@ -82,7 +81,13 @@ class WeekContainer extends Component {
             {this.formatDayCards()}
           </div>
         </div>
-        {Object.keys(this.state.todayData).length === 0 ? <div className="center-text">Please allow location or use the search </div> : <TodayCard data={this.state.todayData} />}
+        {Object.keys(this.state.todayData).length === 0 ? (
+          <div className="center-text">
+            Please allow location or use the search{" "}
+          </div>
+        ) : (
+          <TodayCard data={this.state.todayData} lat={this.state.lat} lon={this.state.lon}  />
+        )}
       </div>
     );
   }

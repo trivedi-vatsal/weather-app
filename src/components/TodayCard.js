@@ -1,36 +1,44 @@
 import React from "react";
 import ChartistGraph from "react-chartist";
+import SunTracker from "./SunTracker";
 const moment = require("moment");
 
-const TodayCard = ({ data }) => {
+const TodayCard = ({ data, lat, lon }) => {
   const imgURL = `owf owf-${data.current.weather[0].id} owf-5x ml-3`;
   let graphData = [];
-  let label = data.hourly.map((entry) => {
+  let label = [];
+  let labelFilter = data.hourly.map((entry) => {
     let newDate = new Date();
     let today = newDate.getDate();
     let day = entry.dt * 1000;
     newDate.setTime(day);
     if (today === newDate.getDate()) {
-      newDate = moment(newDate).format("h a");
+      newDate = moment(newDate).format("h:m a");
       graphData.push(entry.temp);
-      return Math.round(entry.temp) + "°\r\n" + newDate;
+      label.push(Math.round(entry.temp) + "°\r\n" + newDate);
+      return entry;
     }
+    return entry;
   });
 
-  var lineChartData = {
+  let lineChartData = {
     labels: label,
     series: [graphData],
   };
 
-  var lineChartOptions = {
+  let lineChartOptions = {
+    chartPadding: 20,
+    labelOffset: 50,
     showArea: true,
-    width: 3000,
+    width: 1200,
+    height: 200,
     showPoint: true,
     fullWidth: true,
     axisY: {
       showLabel: false,
       showGrid: false,
     },
+
     axisX: {
       labelInterpolationFnc: function (value) {
         return value;
@@ -38,7 +46,7 @@ const TodayCard = ({ data }) => {
     },
   };
   return (
-    <div className="container">
+    <div className="container pb-3">
       <div className="row">
         <div className="col-12">
           <div className="card shadow">
@@ -49,7 +57,7 @@ const TodayCard = ({ data }) => {
                 </span>
                 <i className={imgURL} style={{ color: "#cccccc" }}></i>
               </h5>
-              <div className="scrolling-wrapper pb-0">
+              <div className="scrolling-wrapper pb-0 chart-today">
                 <ChartistGraph
                   data={lineChartData}
                   options={lineChartOptions}
@@ -85,6 +93,7 @@ const TodayCard = ({ data }) => {
                 </div>
               </div>
             </div>
+            <SunTracker lat={lat} lon={lon} />
           </div>
         </div>
       </div>

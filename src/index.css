@@ -29,21 +29,23 @@ code {
 }
 
 .ct-chart {
-  overflow-x: scroll !important;
-  min-width: 500px;
   margin-left: -35px;
 }
 
-.ct-series-a .ct-area,
-.ct-series-a .ct-slice-donut-solid,
-.ct-series-a .ct-slice-pie {
+.chart-today .ct-chart {
+  overflow-x: scroll !important;
+}
+
+.chart-today .ct-series-a .ct-area,
+.chart-today .ct-series-a .ct-slice-donut-solid,
+.chart-today .ct-series-a .ct-slice-pie {
   fill: #5ab6ec;
 }
 
-.ct-series-a .ct-bar,
-.ct-series-a .ct-line,
-.ct-series-a .ct-point,
-.ct-series-a .ct-slice-donut {
+.chart-today .ct-series-a .ct-bar,
+.chart-today .ct-series-a .ct-line,
+.chart-today .ct-series-a .ct-point,
+.chart-today .ct-series-a .ct-slice-donut {
   stroke: #5ab6ec;
 }
 
@@ -61,3 +63,18 @@ code {
   width: 100%;
   overflow: hidden;
 }
+
+
+.chart-sun .ct-series-a .ct-area,
+.chart-sun .ct-series-a .ct-slice-donut-solid,
+.chart-sun .ct-series-a .ct-slice-pie {
+  fill: #ffe734;
+}
+
+.chart-sun .ct-series-a .ct-bar,
+.chart-sun .ct-series-a .ct-line,
+.chart-sun .ct-series-a .ct-point,
+.chart-sun .ct-series-a .ct-slice-donut {
+  stroke: #ffe734;
+}
+
