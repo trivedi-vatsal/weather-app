@@ -1,13 +1,63 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.scrolling-wrapper .day-card {
+  flex: 0 0 auto;
+  min-width: 100px;
+}
+
+.scrolling-wrapper p {
+  margin-bottom: 0 !important;
+}
+
+.ct-chart {
+  overflow-x: scroll !important;
+  min-width: 500px;
+  margin-left: -35px;
+}
+
+.ct-series-a .ct-area,
+.ct-series-a .ct-slice-donut-solid,
+.ct-series-a .ct-slice-pie {
+  fill: #5ab6ec;
+}
+
+.ct-series-a .ct-bar,
+.ct-series-a .ct-line,
+.ct-series-a .ct-point,
+.ct-series-a .ct-slice-donut {
+  stroke: #5ab6ec;
+}
+
+.ct-label.ct-horizontal.ct-end {
+  transform: translate(-50%, 0);
+  display: block;
+  text-align: center;
+}
+
+.ct-label {
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  width: 100%;
+  overflow: hidden;
 }
